@@ -1,16 +1,9 @@
-const mA = math.matrix([[1, 2], [3, 4], [5, 6]])
-const mB = math.matrix([[1, -1], [2, -2], [3, -3]])
-const matrixAdd = math.add(mA, mB)
+const data = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15]
 
-const mC = math.matrix([[1, 2], [3, 4], [5, 6]])
-const mD = math.matrix([[1, -1], [2, -2], [3, -3]])
-const matrixSub = math.subtract(mC, mD)
+const mean = math.mean(data)
+console.log(`Mean of [${data}]: ${mean}`)
 
-console.log(`Matrix A: ${mA}`)
-console.log(`Matrix A X 3: ${math.multiply(3, mA)}`)
+const variance = data.reduce((a, c) => a += (c - mean) ** 2) / data.length
+const variance2 = math.variance(data, "uncorrected")
 
-// console.log(`Matrix Add: ${matrixAdd}`)
-// console.log(`Matrix C: ${mC}`)
-// console.log(`Matrix D: ${mD}`)
-// console.log(`Matrix Sub: ${matrixSub}`)
-// console.table(mA._data)
+console.log(`Variance: ${variance}\nStandard Deviation: ${math.std(data, "uncorrected")}`)
